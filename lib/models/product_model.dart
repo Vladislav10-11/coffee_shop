@@ -1,8 +1,6 @@
-import 'package:flutter/material.dart';
-
 class Product {
   final String name;
-  final int flavor;
+  final List<Map<String, String>> flavors;
 
-  Product({required this.name, required this.flavor});
+  Product({required this.name, required this.flavors});
 }

@@ -1,5 +1,7 @@
 import 'package:coffee_shop/components/card_coffee.dart';
+import 'package:coffee_shop/components/my_bottom_sheet.dart';
 import 'package:coffee_shop/models/product_model.dart';
+import 'package:coffee_shop/pages/flavor_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -15,12 +17,30 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   List menucoffee = [
-    Product(name: 'Affogato', flavor: 3),
-    Product(name: 'Americano', flavor: 1),
-    Product(name: 'Cappuccino', flavor: 5),
-    Product(name: 'Latte', flavor: 5),
-    Product(name: 'Mocha', flavor: 4),
-    Product(name: 'Machiato', flavor: 3),
+    Product(
+      name: 'Cappuccino',
+      flavors: [
+        {'name': 'Caramel', 'description': 'Delicious caramel flavor'},
+        {'name': 'Honey', 'description': 'Sweet honey flavor'},
+        {'name': 'Vanilla', 'description': 'Smooth vanilla flavor'},
+      ],
+    ),
+    Product(
+      name: 'Mocha',
+      flavors: [
+        {'name': 'Chocolate', 'description': 'Rich chocolate flavor'},
+        {'name': 'Hazelnut', 'description': 'Delightful hazelnut flavor'},
+        {'name': 'Cinnamon', 'description': 'Warm cinnamon flavor'},
+      ],
+    ),
+    Product(
+      name: 'Latte',
+      flavors: [
+        {'name': 'Caramel', 'description': 'Creamy caramel flavor'},
+        {'name': 'Toffee', 'description': 'Buttery toffee flavor'},
+        {'name': 'Irish Cream', 'description': 'Irish cream-infused flavor'},
+      ],
+    ),
   ];
   @override
   Widget build(BuildContext context) {
@@ -42,91 +62,110 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
-        child: Column(
-          children: [
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  'Hello Max',
-                  style: GoogleFonts.inter(
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                      color: Color(0xff6C331E)),
-                ),
-                Text(
-                  'Let\'s get you a coffee!',
-                  style: GoogleFonts.inter(
-                    fontSize: 16,
-                    color: Color(0xff6C331E),
+        child: Stack(children: [
+          Column(
+            children: [
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    'Hello Max',
+                    style: GoogleFonts.inter(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                        color: Color(0xff6C331E)),
                   ),
-                ),
-                SizedBox(
-                  height: 20,
-                ),
-                Container(
-                  padding: EdgeInsets.all(5),
-                  width: size.width,
-                  height: 90,
-                  decoration: BoxDecoration(
-                      color: Color(0xffDAC1A5),
-                      border: Border.all(color: Color(0xff6C331E), width: 1.0),
-                      borderRadius: BorderRadius.circular(8)),
-                  child: Column(
-                    children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.end,
-                        children: [
-                          SvgPicture.asset('assets/icon.svg'),
-                        ],
-                      ),
-                      SizedBox(
-                        height: 15,
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(
-                            'Get 25% off on your first order.',
-                            style: GoogleFonts.inter(
-                                fontSize: 14, color: Color(0xff6C331E)),
-                          )
-                        ],
-                      )
-                    ],
-                  ),
-                )
-              ],
-            ),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                Text(
-                  'Menu',
-                  style: GoogleFonts.inter(
+                  Text(
+                    'Let\'s get you a coffee!',
+                    style: GoogleFonts.inter(
+                      fontSize: 16,
                       color: Color(0xff6C331E),
-                      fontWeight: FontWeight.bold,
-                      fontSize: 18),
-                ),
-                Divider(color: Colors.white),
-                SizedBox(
-                  height: 450,
-                  child: ListView.builder(
-                      scrollDirection: Axis.vertical,
-                      shrinkWrap: true,
-                      itemCount: menucoffee.length,
-                      itemBuilder: (context, index) {
-                        return CardCoffee(
-                          flavor: menucoffee[index].flavor,
-                          name: menucoffee[index].name,
-                        );
-                      }),
-                ),
-              ],
-            ),
-          ],
-        ),
+                    ),
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  Container(
+                    padding: EdgeInsets.all(5),
+                    width: size.width,
+                    height: 90,
+                    decoration: BoxDecoration(
+                        color: Color(0xffDAC1A5),
+                        border:
+                            Border.all(color: Color(0xff6C331E), width: 1.0),
+                        borderRadius: BorderRadius.circular(8)),
+                    child: Column(
+                      children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          children: [
+                            SvgPicture.asset('assets/icon.svg'),
+                          ],
+                        ),
+                        SizedBox(
+                          height: 15,
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              'Get 25% off on your first order.',
+                              style: GoogleFonts.inter(
+                                  fontSize: 14, color: Color(0xff6C331E)),
+                            )
+                          ],
+                        )
+                      ],
+                    ),
+                  )
+                ],
+              ),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Text(
+                    'Menu',
+                    style: GoogleFonts.inter(
+                        color: Color(0xff6C331E),
+                        fontWeight: FontWeight.bold,
+                        fontSize: 18),
+                  ),
+                  Divider(color: Colors.white),
+                  SizedBox(
+                    height: 450,
+                    child: ListView.builder(
+                        scrollDirection: Axis.vertical,
+                        shrinkWrap: true,
+                        itemCount: menucoffee.length,
+                        itemBuilder: (context, index) {
+                          List<Map<String, String>> flavors =
+                              menucoffee[index].flavors;
+                          int flavor = flavors.length;
+                          return GestureDetector(
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => FlavorScreen(
+                                            name: menucoffee[index].name,
+                                            flavors: flavors,
+                                          )));
+                            },
+                            child: CardCoffee(
+                              icon: Icon(Icons.arrow_forward_ios),
+                              flavor: flavor,
+                              name: menucoffee[index].name,
+                            ),
+                          );
+                        }),
+                  ),
+                ],
+              ),
+            ],
+          ),
+          MyBottomSheet(),
+        ]),
       ),
     );
   }

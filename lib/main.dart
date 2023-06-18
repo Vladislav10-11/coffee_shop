@@ -1,3 +1,4 @@
+import 'package:coffee_shop/pages/flavor_screen.dart';
 import 'package:coffee_shop/pages/splash_screen.dart';
 import 'package:flutter/material.dart';
 
