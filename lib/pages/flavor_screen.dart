@@ -1,4 +1,7 @@
+import 'dart:ffi';
+
 import 'package:coffee_shop/components/card_flavor.dart';
+import 'package:coffee_shop/providers/cart_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -83,13 +86,18 @@ class _FlavorScreenState extends State<FlavorScreen> {
                 child: ListView.builder(
                     itemCount: widget.flavors.length,
                     itemBuilder: (context, index) {
+                      Int id = widget.flavors[index]['id']!;
                       String name = widget.flavors[index]['name']!;
                       String description =
                           widget.flavors[index]['description']!;
                       int quantity = selectedQuantities[name] ?? 0;
                       return GestureDetector(
                         onTap: () {
-                          _showBottomSheet(context, name);
+                          _showBottomSheet(
+                            context,
+                            name,
+                            id,
+                          );
                         },
                         child: CardFlavor(
                             name: name,
@@ -110,7 +118,11 @@ class _FlavorScreenState extends State<FlavorScreen> {
     );
   }
 
-  void _showBottomSheet(BuildContext context, String flavorName) {
+  void _showBottomSheet(
+    BuildContext context,
+    String flavorName,
+    int id,
+  ) {
     showModalBottomSheet(
         context: context,
         shape: RoundedRectangleBorder(
@@ -179,6 +191,7 @@ class _FlavorScreenState extends State<FlavorScreen> {
                             largeCupQuantity;
 
                         _handleQuantitySelected(flavorName, selectedQuantity);
+                        var item = CartItem(name: flavorName, id: id);
 
                         _quantitySmallController.clear();
                         _quantityMediumController.clear();

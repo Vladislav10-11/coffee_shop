@@ -18,6 +18,7 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   List menucoffee = [
     Product(
+      id: 0,
       name: 'Cappuccino',
       flavors: [
         {
@@ -29,6 +30,7 @@ class _HomeScreenState extends State<HomeScreen> {
       ],
     ),
     Product(
+      id: 1,
       name: 'Mocha',
       flavors: [
         {'name': 'Chocolate Mocha', 'description': 'Rich chocolate flavor'},
@@ -37,6 +39,7 @@ class _HomeScreenState extends State<HomeScreen> {
       ],
     ),
     Product(
+      id: 2,
       name: 'Latte',
       flavors: [
         {'name': 'Caramel Latte', 'description': 'Creamy caramel flavor'},

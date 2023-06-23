@@ -1,8 +1,11 @@
+import 'package:coffee_shop/components/my_remove_button.dart';
 import 'package:coffee_shop/components/queue_card.dart';
+import 'package:coffee_shop/providers/cart_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class CartScreen extends StatefulWidget {
-  final List<Map<String, int>> cartItems;
+  final Map<String, int> cartItems;
   const CartScreen({super.key, required this.cartItems});
 
   @override
@@ -12,6 +15,7 @@ class CartScreen extends StatefulWidget {
 class _CartScreenState extends State<CartScreen> {
   @override
   Widget build(BuildContext context) {
+    var cartProvider = Provider.of<CartProvider>(context);
     return Scaffold(
       backgroundColor: Color(0xffEDE2D4),
       appBar: AppBar(
@@ -32,7 +36,12 @@ class _CartScreenState extends State<CartScreen> {
         ),
       ),
       body: Column(
-        children: [ListView.builder(itemBuilder: widget.cartItems.length)],
+        children: [
+          
+          // MyRemoveButton(
+          //  // clearCart: cartProvider.clearCart(),
+          // )
+        ],
       ),
     );
   }
