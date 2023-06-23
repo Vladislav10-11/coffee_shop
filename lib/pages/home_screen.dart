@@ -1,5 +1,5 @@
 import 'package:coffee_shop/components/card_coffee.dart';
-import 'package:coffee_shop/components/my_bottom_sheet.dart';
+import 'package:coffee_shop/components/my_bottom_button.dart';
 import 'package:coffee_shop/models/product_model.dart';
 import 'package:coffee_shop/pages/flavor_screen.dart';
 import 'package:flutter/material.dart';
@@ -20,25 +20,32 @@ class _HomeScreenState extends State<HomeScreen> {
     Product(
       name: 'Cappuccino',
       flavors: [
-        {'name': 'Caramel', 'description': 'Delicious caramel flavor'},
-        {'name': 'Honey', 'description': 'Sweet honey flavor'},
-        {'name': 'Vanilla', 'description': 'Smooth vanilla flavor'},
+        {
+          'name': 'Caramel Cappuccino',
+          'description': 'Delicious caramel flavor'
+        },
+        {'name': 'Honey Cappuccino', 'description': 'Sweet honey flavor'},
+        {'name': 'Vanilla Cappuccino', 'description': 'Smooth vanilla flavor'},
       ],
     ),
     Product(
       name: 'Mocha',
       flavors: [
-        {'name': 'Chocolate', 'description': 'Rich chocolate flavor'},
-        {'name': 'Hazelnut', 'description': 'Delightful hazelnut flavor'},
-        {'name': 'Cinnamon', 'description': 'Warm cinnamon flavor'},
+        {'name': 'Chocolate Mocha', 'description': 'Rich chocolate flavor'},
+        {'name': 'Hazelnut Mocha', 'description': 'Delightful hazelnut flavor'},
+        {'name': 'Cinnamon Mocha', 'description': 'Warm cinnamon flavor'},
       ],
     ),
     Product(
       name: 'Latte',
       flavors: [
-        {'name': 'Caramel', 'description': 'Creamy caramel flavor'},
-        {'name': 'Toffee', 'description': 'Buttery toffee flavor'},
-        {'name': 'Irish Cream', 'description': 'Irish cream-infused flavor'},
+        {'name': 'Caramel Latte', 'description': 'Creamy caramel flavor'},
+        {'name': 'Toffee Latte', 'description': 'Buttery toffee flavor'},
+        {
+          'name': 'Irish Cream Latte',
+          'description': 'Irish cream-infused flavor'
+        },
+        {'name': 'Vanilla Latte', 'description': 'Make your day-y.'}
       ],
     ),
   ];
@@ -164,7 +171,7 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ],
           ),
-          MyBottomSheet(),
+          //MyBottomButton(),
         ]),
       ),
     );

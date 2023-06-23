@@ -1,17 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class CardFlavor extends StatelessWidget {
+class QueueCard extends StatelessWidget {
   final String name;
-  final String description;
-  final int quantity;
-  final Icon icon;
-  const CardFlavor(
-      {super.key,
-      this.quantity = 0,
-      required this.name,
-      required this.description,
-      required this.icon});
+  final int flavor;
+
+  const QueueCard({
+    super.key,
+    required this.name,
+    required this.flavor,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -36,22 +34,15 @@ class CardFlavor extends StatelessWidget {
                 ),
               ),
               Text(
-                "${description.toString()} ",
+                "${flavor.toString()} flavor${flavor > 1 ? "s" : ""}",
                 style: GoogleFonts.inter(color: Color(0xffA84F2F)),
               ),
             ],
           ),
-          if (quantity > 0) ...[
-            Text('$quantity cups'),
-          ] else ...[
-            Text('')
-          ],
           Column(
             crossAxisAlignment: CrossAxisAlignment.end,
-            children: [
-              icon,
-            ],
-          )
+            children: [],
+          ),
         ],
       ),
     );

@@ -1,8 +1,15 @@
+import 'package:coffee_shop/pages/cart_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-class MyBottomSheet extends StatelessWidget {
-  const MyBottomSheet({super.key});
+class MyBottomButton extends StatelessWidget {
+  final Map<String, int> cartItems;
+  final int quantity;
+  const MyBottomButton({
+    super.key,
+    this.quantity = 0,
+    required this.cartItems,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -10,25 +17,10 @@ class MyBottomSheet extends StatelessWidget {
       alignment: Alignment.bottomCenter,
       child: InkWell(
         onTap: () {
-          showModalBottomSheet(
-            context: context,
-            isScrollControlled: true,
-            builder: (BuildContext context) {
-              return DraggableScrollableSheet(
-                initialChildSize: 0.8,
-                minChildSize: 0.2,
-                maxChildSize: 0.8,
-                builder:
-                    (BuildContext context, ScrollController scrollController) {
-                  return Container(
-                    decoration: BoxDecoration(
-                      color: Colors.black38,
-                    ),
-                  );
-                },
-              );
-            },
-          );
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => CartScreen(cartItems: cartItems)));
         },
         child: Container(
           padding: EdgeInsets.all(20.0),
@@ -47,7 +39,7 @@ class MyBottomSheet extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'You have 0 items in queue',
+                    ' You have $quantity items in queue ',
                     style: TextStyle(
                         color: Colors.white,
                         fontSize: 16,
